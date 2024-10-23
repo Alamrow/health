@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Test Analysis Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Blood Test Analysis Results</h1>
+    
+    <div id="results" class="result"></div>
+    
+    <script>
+        // Get the query parameters from the URL
+        const params = new URLSearchParams(window.location.search);
+        const results = params.get('results');
+
+        // Display the results on the page
+        if (results) {
+            document.getElementById("results").innerText = results; // Display the results
+        } else {
+            document.getElementById("results").innerText = "No results to display.";
+        }
+    </script>
+
+    <a href="index.html">Go Back</a>
+</body>
+</html>
