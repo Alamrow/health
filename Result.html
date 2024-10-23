@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Test Analysis Results</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add some basic styling for the results page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Blood Test Analysis Results</h1>
+    
+    <div id="results" class="result"></div>
+    
+    <script>
+        // Get the query parameters from the URL
+        const params = new URLSearchParams(window.location.search);
+        const results = params.get('results');
+
+        // Display the results on the page
+        if (results) {
+            document.getElementById("results").innerText = results.replace(/,/g, '\n'); // Convert comma-separated results to new lines
+        } else {
+            document.getElementById("results").innerText = "No results to display.";
+        }
+    </script>
+
+    <a href="index.html">Go Back</a>
+</body>
+</html>
