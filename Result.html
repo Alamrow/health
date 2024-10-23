@@ -6,7 +6,6 @@
     <title>Blood Test Analysis Results</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Add some basic styling for the results page */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -24,6 +23,18 @@
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            white-space: pre-wrap; /* Maintains formatting for new lines */
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -39,7 +50,7 @@
 
         // Display the results on the page
         if (results) {
-            document.getElementById("results").innerText = results.replace(/,/g, '\n'); // Convert comma-separated results to new lines
+            document.getElementById("results").innerText = results; // Display the results
         } else {
             document.getElementById("results").innerText = "No results to display.";
         }
