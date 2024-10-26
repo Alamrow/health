@@ -52,3 +52,28 @@ button:hover {
 }
 
 a {
+    color: #0000EE; /* Default link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styles */
+footer {
+    font-family: Arial, sans-serif;
+    color: #000000; /* Gold color for text */
+    background-color: #FFD700; /* Black background for contrast */
+    padding: 20px;
+    text-align: left;
+}
+
+footer a {
+    color: #FFD700; /* Ensure links also follow the theme color */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline; /* Optional hover effect */
+}
