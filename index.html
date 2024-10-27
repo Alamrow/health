@@ -1,21 +1,21 @@
 function analyzeResults() {
     const parameters = {
-        glucose: parseFloat(document.getElementById("glucose").value),
-        cholesterol: parseFloat(document.getElementById("cholesterol").value),
-        triglycerides: parseFloat(document.getElementById("triglycerides").value),
-        hdl: parseFloat(document.getElementById("hdl").value),
-        ldl: parseFloat(document.getElementById("ldl").value),
-        hemoglobin: parseFloat(document.getElementById("hemoglobin").value),
-        whiteBloodCells: parseFloat(document.getElementById("whiteBloodCells").value),
-        platelets: parseFloat(document.getElementById("platelets").value),
-        creatinine: parseFloat(document.getElementById("creatinine").value),
-        bilirubin: parseFloat(document.getElementById("bilirubin").value),
-        alkPhos: parseFloat(document.getElementById("alkPhos").value),
-        ast: parseFloat(document.getElementById("ast").value),
-        alt: parseFloat(document.getElementById("alt").value),
-        uricAcid: parseFloat(document.getElementById("uricAcid").value),
-        calcium: parseFloat(document.getElementById("calcium").value),
-        sodium: parseFloat(document.getElementById("sodium").value),
+        glucose: document.getElementById("glucose").value,
+        cholesterol: document.getElementById("cholesterol").value,
+        triglycerides: document.getElementById("triglycerides").value,
+        hdl: document.getElementById("hdl").value,
+        ldl: document.getElementById("ldl").value,
+        hemoglobin: document.getElementById("hemoglobin").value,
+        whiteBloodCells: document.getElementById("whiteBloodCells").value,
+        platelets: document.getElementById("platelets").value,
+        creatinine: document.getElementById("creatinine").value,
+        bilirubin: document.getElementById("bilirubin").value,
+        alkPhos: document.getElementById("alkPhos").value,
+        ast: document.getElementById("ast").value,
+        alt: document.getElementById("alt").value,
+        uricAcid: document.getElementById("uricAcid").value,
+        calcium: document.getElementById("calcium").value,
+        sodium: document.getElementById("sodium").value,
     };
 
     let results = "";
@@ -40,14 +40,18 @@ function analyzeResults() {
     };
 
     for (const [key, value] of Object.entries(parameters)) {
-        if (!isNaN(value)) { // Only process if value is a number
-            if (value < ranges[key].low) {
-                results += `<span style="color: red;">${key.charAt(0).toUpperCase() + key.slice(1)}: Under range,</span><br>`;
-            } else if (value > ranges[key].high) {
-                results += `<span style="color: red;">${key.charAt(0).toUpperCase() + key.slice(1)}: High range,</span><br>`;
-            } else {
-                results += `<span style="color: green;">${key.charAt(0).toUpperCase() + key.slice(1)}: In range,</span><br>`;
-            }
+        // Check if the value is not empty
+        if (value.trim() === "") {
+            continue; // Skip this parameter if no value is entered
+        }
+
+        const numericValue = parseFloat(value); // Convert to a number
+        if (numericValue < ranges[key].low) {
+            results += `<span style="color: red;">${key.charAt(0).toUpperCase() + key.slice(1)}: Under range,</span><br>`;
+        } else if (numericValue > ranges[key].high) {
+            results += `<span style="color: red;">${key.charAt(0).toUpperCase() + key.slice(1)}: High range,</span><br>`;
+        } else {
+            results += `<span style="color: green;">${key.charAt(0).toUpperCase() + key.slice(1)}: In range,</span><br>`;
         }
     }
 
