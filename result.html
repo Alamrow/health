@@ -37,7 +37,7 @@
                     // Determine if the result is in range or out of range
                     if (line.includes("In range")) {
                         resultSpan.className = "in-range"; // Apply green color for in-range results
-                    } else {
+                    } else if (line.includes("High range") || line.includes("Under range")) {
                         resultSpan.className = "out-of-range"; // Apply red color for out-of-range results
                     }
 
