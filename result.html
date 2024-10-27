@@ -5,14 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood Test Analysis Results</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .in-range {
-            color: green; /* Green for in-range results */
-        }
-        .out-of-range {
-            color: red; /* Red for out-of-range results */
-        }
-    </style>
 </head>
 <body>
     <h1>Blood Test Analysis Results</h1>
@@ -27,21 +19,12 @@
         // Display the results on the page
         if (results) {
             const resultDiv = document.getElementById("results");
-            const resultLines = results.split(','); // Split each line of the results
+            const resultLines = results.split('<br>'); // Split each line of the results
 
             resultLines.forEach(line => {
                 if (line.trim() !== "") {
                     const resultSpan = document.createElement('span');
-                    const formattedLine = line.trim().replace(/([A-Z])/g, ' $1').trim(); // Format the parameter names
-
-                    // Determine if the result is in range or out of range
-                    if (line.includes("In range")) {
-                        resultSpan.className = "in-range"; // Apply green color for in-range results
-                    } else if (line.includes("High range") || line.includes("Under range")) {
-                        resultSpan.className = "out-of-range"; // Apply red color for out-of-range results
-                    }
-
-                    resultSpan.textContent = formattedLine; // Set formatted text
+                    resultSpan.innerHTML = line; // Use innerHTML to maintain formatting
                     resultDiv.appendChild(resultSpan);
                     resultDiv.appendChild(document.createElement('br')); // Line break after each result
                 }
