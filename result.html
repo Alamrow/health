@@ -18,7 +18,24 @@
 
         // Display the results on the page
         if (results) {
-            document.getElementById("results").innerText = results; // Display the results
+            const resultDiv = document.getElementById("results");
+            const resultLines = results.split(','); // Split each line of the results
+
+            resultLines.forEach(line => {
+                if (line.trim() !== "") {
+                    const resultSpan = document.createElement('span');
+
+                    if (line.includes("In range")) {
+                        resultSpan.className = "in-range"; // Apply green color for in-range results
+                    } else {
+                        resultSpan.className = "out-of-range"; // Apply red color for out-of-range results
+                    }
+
+                    resultSpan.textContent = line;
+                    resultDiv.appendChild(resultSpan);
+                    resultDiv.appendChild(document.createElement('br')); // Line break after each result
+                }
+            });
         } else {
             document.getElementById("results").innerText = "No results to display.";
         }
@@ -27,6 +44,6 @@
     <a href="index.html">Go Back</a>
     <footer>
         <p>Created by Eng. Odeh Al Amrow, 2024</p>
-      </footer>
+    </footer>
 </body>
 </html>
