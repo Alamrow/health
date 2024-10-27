@@ -1,125 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood Test Analyzer</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Blood Test Parameter Analyzer</h1>
-    
-    <form id="bloodTestForm">
-        <label for="glucose">Glucose (mg/dL):</label>
-        <input type="number" id="glucose" required><br><br>
-        
-        <label for="cholesterol">Cholesterol (mg/dL):</label>
-        <input type="number" id="cholesterol" required><br><br>
-        
-        <label for="triglycerides">Triglycerides (mg/dL):</label>
-        <input type="number" id="triglycerides" required><br><br>
-        
-        <label for="hdl">HDL (mg/dL):</label>
-        <input type="number" id="hdl" required><br><br>
-        
-        <label for="ldl">LDL (mg/dL):</label>
-        <input type="number" id="ldl" required><br><br>
-        
-        <label for="hemoglobin">Hemoglobin (g/dL):</label>
-        <input type="number" id="hemoglobin" required><br><br>
-        
-        <label for="whiteBloodCells">White Blood Cells (x10^9/L):</label>
-        <input type="number" id="whiteBloodCells" required><br><br>
-        
-        <label for="platelets">Platelets (x10^9/L):</label>
-        <input type="number" id="platelets" required><br><br>
-        
-        <label for="creatinine">Creatinine (mg/dL):</label>
-        <input type="number" id="creatinine" required><br><br>
-        
-        <label for="bilirubin">Bilirubin (mg/dL):</label>
-        <input type="number" id="bilirubin" required><br><br>
-        
-        <label for="alkPhos">Alkaline Phosphatase (U/L):</label>
-        <input type="number" id="alkPhos" required><br><br>
-        
-        <label for="ast">AST (U/L):</label>
-        <input type="number" id="ast" required><br><br>
-        
-        <label for="alt">ALT (U/L):</label>
-        <input type="number" id="alt" required><br><br>
-        
-        <label for="uricAcid">Uric Acid (mg/dL):</label>
-        <input type="number" id="uricAcid" required><br><br>
-        
-        <label for="calcium">Calcium (mg/dL):</label>
-        <input type="number" id="calcium" required><br><br>
-        
-        <label for="sodium">Sodium (mmol/L):</label>
-        <input type="number" id="sodium" required><br><br>
+function analyzeResults() {
+    const parameters = {
+        glucose: parseFloat(document.getElementById("glucose").value),
+        cholesterol: parseFloat(document.getElementById("cholesterol").value),
+        triglycerides: parseFloat(document.getElementById("triglycerides").value),
+        hdl: parseFloat(document.getElementById("hdl").value),
+        ldl: parseFloat(document.getElementById("ldl").value),
+        hemoglobin: parseFloat(document.getElementById("hemoglobin").value),
+        whiteBloodCells: parseFloat(document.getElementById("whiteBloodCells").value),
+        platelets: parseFloat(document.getElementById("platelets").value),
+        creatinine: parseFloat(document.getElementById("creatinine").value),
+        bilirubin: parseFloat(document.getElementById("bilirubin").value),
+        alkPhos: parseFloat(document.getElementById("alkPhos").value),
+        ast: parseFloat(document.getElementById("ast").value),
+        alt: parseFloat(document.getElementById("alt").value),
+        uricAcid: parseFloat(document.getElementById("uricAcid").value),
+        calcium: parseFloat(document.getElementById("calcium").value),
+        sodium: parseFloat(document.getElementById("sodium").value),
+    };
 
-        <button type="button" onclick="analyzeResults()">Analyze</button>
-    </form>
+    let results = "";
 
-    <script>
-        function analyzeResults() {
-            const parameters = {
-                glucose: parseFloat(document.getElementById("glucose").value),
-                cholesterol: parseFloat(document.getElementById("cholesterol").value),
-                triglycerides: parseFloat(document.getElementById("triglycerides").value),
-                hdl: parseFloat(document.getElementById("hdl").value),
-                ldl: parseFloat(document.getElementById("ldl").value),
-                hemoglobin: parseFloat(document.getElementById("hemoglobin").value),
-                whiteBloodCells: parseFloat(document.getElementById("whiteBloodCells").value),
-                platelets: parseFloat(document.getElementById("platelets").value),
-                creatinine: parseFloat(document.getElementById("creatinine").value),
-                bilirubin: parseFloat(document.getElementById("bilirubin").value),
-                alkPhos: parseFloat(document.getElementById("alkPhos").value),
-                ast: parseFloat(document.getElementById("ast").value),
-                alt: parseFloat(document.getElementById("alt").value),
-                uricAcid: parseFloat(document.getElementById("uricAcid").value),
-                calcium: parseFloat(document.getElementById("calcium").value),
-                sodium: parseFloat(document.getElementById("sodium").value),
-            };
+    const ranges = {
+        glucose: { low: 70, high: 140 },
+        cholesterol: { low: 125, high: 200 },
+        triglycerides: { low: 0, high: 150 },
+        hdl: { low: 40, high: 60 },
+        ldl: { low: 0, high: 100 },
+        hemoglobin: { low: 13.5, high: 17.5 },
+        whiteBloodCells: { low: 4, high: 11 },
+        platelets: { low: 150, high: 450 },
+        creatinine: { low: 0.6, high: 1.2 },
+        bilirubin: { low: 0.1, high: 1.2 },
+        alkPhos: { low: 44, high: 147 },
+        ast: { low: 10, high: 40 },
+        alt: { low: 7, high: 56 },
+        uricAcid: { low: 3.5, high: 7.2 },
+        calcium: { low: 8.5, high: 10.2 },
+        sodium: { low: 135, high: 145 },
+    };
 
-            let results = "";
-
-            const ranges = {
-                glucose: { low: 70, high: 140 },
-                cholesterol: { low: 125, high: 200 },
-                triglycerides: { low: 0, high: 150 },
-                hdl: { low: 40, high: 60 },
-                ldl: { low: 0, high: 100 },
-                hemoglobin: { low: 13.5, high: 17.5 },
-                whiteBloodCells: { low: 4, high: 11 },
-                platelets: { low: 150, high: 450 },
-                creatinine: { low: 0.6, high: 1.2 },
-                bilirubin: { low: 0.1, high: 1.2 },
-                alkPhos: { low: 44, high: 147 },
-                ast: { low: 10, high: 40 },
-                alt: { low: 7, high: 56 },
-                uricAcid: { low: 3.5, high: 7.2 },
-                calcium: { low: 8.5, high: 10.2 },
-                sodium: { low: 135, high: 145 },
-            };
-
-            for (const [key, value] of Object.entries(parameters)) {
-                if (value < ranges[key].low) {
-                    results += `<span style="color: red;">${key.charAt(0).toUpperCase() + key.slice(1)}: Under range</span><br>`;
-                } else if (value > ranges[key].high) {
-                    results += `<span style="color: red;">${key.charAt(0).toUpperCase() + key.slice(1)}: High range</span><br>`;
-                } else {
-                    results += `<span style="color: green;">${key.charAt(0).toUpperCase() + key.slice(1)}: In range</span><br>`;
-                }
+    for (const [key, value] of Object.entries(parameters)) {
+        if (!isNaN(value)) { // Only process if value is a number
+            if (value < ranges[key].low) {
+                results += `<span style="color: red;">${key.charAt(0).toUpperCase() + key.slice(1)}: Under range,</span><br>`;
+            } else if (value > ranges[key].high) {
+                results += `<span style="color: red;">${key.charAt(0).toUpperCase() + key.slice(1)}: High range,</span><br>`;
+            } else {
+                results += `<span style="color: green;">${key.charAt(0).toUpperCase() + key.slice(1)}: In range,</span><br>`;
             }
-
-            const encodedResults = encodeURIComponent(results);
-            window.location.href = `result.html?results=${encodedResults}`;
         }
-    </script>
-    
-    <footer>
-        <p>Created by Eng. Odeh Al Amrow, 2024</p>
-    </footer>
-</body>
-</html>
+    }
+
+    const encodedResults = encodeURIComponent(results);
+    window.location.href = `result.html?results=${encodedResults}`;
+}
