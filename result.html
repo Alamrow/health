@@ -32,6 +32,7 @@
             resultLines.forEach(line => {
                 if (line.trim() !== "") {
                     const resultSpan = document.createElement('span');
+                    const formattedLine = line.trim().replace(/([A-Z])/g, ' $1').trim(); // Format the parameter names
 
                     // Determine if the result is in range or out of range
                     if (line.includes("In range")) {
@@ -40,7 +41,7 @@
                         resultSpan.className = "out-of-range"; // Apply red color for out-of-range results
                     }
 
-                    resultSpan.textContent = line;
+                    resultSpan.textContent = formattedLine; // Set formatted text
                     resultDiv.appendChild(resultSpan);
                     resultDiv.appendChild(document.createElement('br')); // Line break after each result
                 }
