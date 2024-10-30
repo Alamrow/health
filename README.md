@@ -27,19 +27,6 @@ ALT (U/L)
 Uric Acid (mg/dL)
 Calcium (mg/dL)
 Sodium (mmol/L)
-Additional parameters can be added as needed.
 
-Installation
-Clone the repository:
-bash
-Copy code
-git clone https://github.com/your-username/blood-test-analyzer.git
-Open the project folder and run the application on a local server.
-Usage
-Open the index.html file in your browser.
-Input your blood test results into the form.
-Click Analyze to receive your results.
-The results page will show whether each value is within the normal range, under range, or above range, with appropriate color coding.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+
 
