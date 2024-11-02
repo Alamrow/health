@@ -1,7 +1,5 @@
 {
-  "name": "Health App",
-  "short_name": "Health",
-  "start_url": "/index.html",
+    "start_url": "/index.html",
   "display": "standalone",
  
 }
