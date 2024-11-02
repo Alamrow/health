@@ -1,5 +1,11 @@
 {
-    "start_url": "/index.html",
-  "display": "standalone",
- 
+  "name": "Blood Test Analyzer",
+  "theme_color": "#e88c8c",
+  "background_color": "#dec6c6",
+  "short_name": "BTA",
+  "id": "blood test analyzer",
+  "description": "blood test analyzer",
+  "categories": [
+    "health"
+  ]
 }
